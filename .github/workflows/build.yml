@@ -44,3 +44,4 @@ jobs:
           token: ${{ github.token }}
           summary: true
           detailed_summary: true
+          check_name: "JUnit report with gradle ${{ matrix.gradle-version }}" 
