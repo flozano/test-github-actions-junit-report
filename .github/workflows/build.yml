@@ -8,17 +8,15 @@ on:
     branches:
       - main
 
-permissions:
-    contents: read
-    checks: write
-  
+permissions: write-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        gradle-version: ["8.8", "8.9"]
+        gradle-version: ["8.5", "8.8", "8.9"]
 
     steps:
       - name: Checkout sources
@@ -26,8 +24,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: "temurin"
+          java-version: "21"
 
       - name: Gradle setup
         uses: gradle/actions/setup-gradle@v4
@@ -36,7 +34,7 @@ jobs:
 
       - name: Run Gradle Build
         run: ./gradlew build
-        
+
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
         if: success() || failure() # always run even if the previous step fails
