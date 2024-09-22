@@ -34,7 +34,7 @@ jobs:
           gradle-version: ${{ matrix.gradle-version }}
 
       - name: Run Gradle Build
-        run: ./gradlew build
+        run: gradle build
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
@@ -44,4 +44,4 @@ jobs:
           token: ${{ github.token }}
           summary: true
           detailed_summary: true
-          check_name: "JUnit report with gradle ${{ matrix.gradle-version }}" 
+          check_name: "JUnit report with gradle ${{ matrix.gradle-version }}"
